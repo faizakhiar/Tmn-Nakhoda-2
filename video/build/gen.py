@@ -419,7 +419,7 @@ els.append(f'''
     <div><b>2,300+</b><span>Kaki persegi</span></div>
     <div><b>RM488K</b><span>Harga bermula</span></div>
   </div>
-  <div class="cta-btn" id="cta-btn">HUBUNGI KAMI SEKARANG</div>
+  <div class="cta-btn" id="cta-btn">HUBUNGI SAYA SEKARANG</div>
 </section>''')
 J(f'tl.fromTo("#sc-cta",{{opacity:0}},{{opacity:1,duration:0.35}},{s-0.06:.2f});')
 J(f'tl.fromTo("#cta-img",{{scale:1.05}},{{scale:1.22,duration:{TOTAL-s:.2f},ease:"none"}},{s-0.06:.2f});')
