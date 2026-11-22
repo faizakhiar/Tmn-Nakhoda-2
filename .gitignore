@@ -1,0 +1,5 @@
+.hyperframes/
+**/.hyperframes/
+node_modules/
+preview/
+*.log
