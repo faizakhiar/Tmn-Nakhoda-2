@@ -98,11 +98,11 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0f0c}
 /* cta */
 .cta-top{position:absolute;left:0;right:0;top:280px;text-align:center;font-weight:900;font-size:96px;line-height:1;text-shadow:0 6px 24px rgba(0,0,0,.5)}
 .cta-top em{font-style:normal;color:var(--acc)}
-.cta-recap{position:absolute;left:60px;right:60px;top:1000px;display:flex;gap:18px}
+.cta-recap{position:absolute;left:60px;right:60px;top:540px;display:flex;gap:18px}
 .cta-recap div{flex:1;background:rgba(255,255,255,.95);color:var(--ink);border-radius:22px;padding:20px 10px;text-align:center}
 .cta-recap b{display:block;font-weight:900;font-size:54px}
 .cta-recap span{display:block;font-weight:700;font-size:24px;color:#4a4a4a}
-.cta-btn{position:absolute;left:90px;right:90px;top:1190px;text-align:center;background:var(--acc);color:var(--ink);font-weight:900;font-size:52px;padding:30px 0;border-radius:999px;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.cta-btn{position:absolute;left:90px;right:90px;top:700px;text-align:center;background:var(--acc);color:var(--ink);font-weight:900;font-size:52px;padding:30px 0;border-radius:999px;box-shadow:0 16px 40px rgba(0,0,0,.45)}
 /* captions */
 #captions{position:absolute;inset:0;pointer-events:none}
 .cap{text-transform:uppercase;position:absolute;left:70px;right:70px;top:1395px;text-align:center;font-weight:900;font-size:60px;line-height:1.15;color:#fff;-webkit-text-stroke:10px #111;paint-order:stroke fill;text-shadow:0 6px 18px rgba(0,0,0,.5)}
