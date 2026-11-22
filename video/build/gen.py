@@ -320,11 +320,11 @@ pois = [("sekolah", sek, "SEKOLAH", "SMK Telok Panglima Garang",
          '<path d="M24 6 4 16l20 10 20-10zM10 19v10c0 4 6 8 14 8s14-4 14-8V19" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>'),
         ("klinik", kli, "KLINIK", "Klinik Kesihatan Kebun Baru",
          '<path d="M18 6h12v12h12v12H30v12H18V30H6V18h12z" fill="currentColor"/>'),
-        ("pasaraya", pas, "PASARAYA", "Kedai runcit & pasaraya",
+        ("pasaraya", pas, "PASARAYA", "Lotus's & Econsave Jenjarom",
          '<path d="M4 8h6l5 22h22l5-16H13" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="18" cy="38" r="3.5" fill="currentColor"/><circle cx="34" cy="38" r="3.5" fill="currentColor"/>')]
 pins_html = ""
 for k, at, title, sub, icon in pois:
-    pins_html += f'<div class="poi{" left" if k=="klinik" else ""}" id="poi-{k}" data-x="{POI[k][0]:.1f}" data-y="{POI[k][1]:.1f}"><div class="poi-dot"><svg viewBox="0 0 48 48">{icon}</svg></div><div class="poi-label"><b>{title}</b><span>{sub}</span></div></div>'
+    pins_html += f'<div class="poi{ {"pasaraya":" left","sekolah":" below"}.get(k,"") }" id="poi-{k}" data-x="{POI[k][0]:.1f}" data-y="{POI[k][1]:.1f}"><div class="poi-dot"><svg viewBox="0 0 48 48">{icon}</svg></div><div class="poi-label"><b>{title}</b><span>{sub}</span></div></div>'
 pins_html += f'<div class="poi skve" id="poi-tol" data-x="{POI["tol"][0]:.1f}" data-y="{POI["tol"][1]:.1f}"><div class="poi-dot"><b>E26</b></div><div class="poi-label"><b>SKVE</b><span>Tol Teluk Panglima Garang</span></div></div>'
 pins_html += f'<div class="poi site" id="poi-site" data-x="{POI["site"][0]:.1f}" data-y="{POI["site"][1]:.1f}"><div class="pin small"><svg viewBox="0 0 64 84"><path d="M32 2C16 2 4 14 4 30c0 21 28 52 28 52s28-31 28-52C60 14 48 2 32 2z" fill="#FFD23F" stroke="#1a1a1a" stroke-width="4"/><circle cx="32" cy="30" r="11" fill="#1a1a1a"/></svg></div></div>'
 tx, ty = POI["tol"]
@@ -348,7 +348,7 @@ J(f'''(function(){{const cam=document.getElementById("m2-cam");const st={{z:Math
   for(const p of pois){{p.style.left=(ox+parseFloat(p.dataset.x)*k)+"px";p.style.top=(oy+parseFloat(p.dataset.y)*k)+"px";}}}};
  set();
  tl.to(st,{{z:Math.log2(1.05),cx:{amid_cx:.0f},cy:{(POI["sekolah"][1]+POI["site"][1])/2+60:.0f},duration:{sek-s+0.3:.2f},ease:"power2.inOut",onUpdate:set}},{s-0.06:.2f});
- tl.to(st,{{z:Math.log2(0.95),cx:{(sx+tx)/2-180:.0f},cy:{(POI["pasaraya"][1]+ty)/2:.0f},duration:{skve-sek-0.4:.2f},ease:"sine.inOut",onUpdate:set}},{sek+0.3:.2f});
+ tl.to(st,{{z:Math.log2(0.5),cx:{(POI["sekolah"][0]+POI["pasaraya"][0])/2:.0f},cy:{POI["klinik"][1]+(960-280)/0.5:.0f},duration:{pas-sek-0.25:.2f},ease:"power2.inOut",onUpdate:set}},{sek+0.3:.2f});
  tl.to(st,{{z:Math.log2(1.6),cx:{(sx+tx)/2:.0f},cy:{(sy+ty)/2+60:.0f},duration:{e-skve+0.3:.2f},ease:"power2.inOut",onUpdate:set}},{skve-0.1:.2f});
 }})();''')
 J(f'tl.fromTo("#sc-amen",{{opacity:0}},{{opacity:1,duration:0.3}},{s-0.06:.2f});')
