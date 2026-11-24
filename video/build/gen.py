@@ -31,7 +31,9 @@ for name, a, b in EDIT:
     SEG[name] = dict(src=a, end=b, start=round(t, 3), dur=round(b - a, 3))
     t += (b - a) + GAP
 VO_END = t - GAP
-TOTAL = round(VO_END + 1.6, 2)
+OUTRO_AT = round(VO_END + 0.55, 3)  # brand outro clip (logo, website, phone) after a short CTA hold
+OUTRO_LEN = 3.0                       # full outro clip, nothing trimmed
+TOTAL = round(OUTRO_AT + OUTRO_LEN, 2)
 
 
 def o(src):
@@ -410,7 +412,7 @@ sfx("ding", dis + 0.4, 0.35)
 s, e = sc("cta")
 lanjut, mana = W("kalau", 47.0), W("mana", 50.5)
 els.append(f'''
-<section id="sc-cta" class="clip scene" data-start="{s-0.06:.3f}" data-duration="{TOTAL-s+0.06:.3f}">
+<section id="sc-cta" class="clip scene" data-start="{s-0.06:.3f}" data-duration="{OUTRO_AT-s+0.1:.3f}">
   <img class="fill" id="cta-img" src="assets/img/render-corner.png" alt="">
   <div class="shade-t"></div>
   <div class="cta-top" id="cta-top">NAK TAHU<br><em>LEBIH LANJUT?</em></div>
@@ -422,12 +424,14 @@ els.append(f'''
   <div class="cta-btn" id="cta-btn">HUBUNGI SAYA SEKARANG</div>
 </section>''')
 J(f'tl.fromTo("#sc-cta",{{opacity:0}},{{opacity:1,duration:0.35}},{s-0.06:.2f});')
-J(f'tl.fromTo("#cta-img",{{scale:1.05}},{{scale:1.22,duration:{TOTAL-s:.2f},ease:"none"}},{s-0.06:.2f});')
+J(f'tl.fromTo("#cta-img",{{scale:1.05}},{{scale:1.22,duration:{OUTRO_AT-s:.2f},ease:"none"}},{s-0.06:.2f});')
 J(f'tl.fromTo("#cta-top",{{opacity:0,y:-40}},{{opacity:1,y:0,duration:0.45,ease:"power3.out"}},{lanjut+0.1:.2f});')
 J(f'tl.fromTo("#cta-recap > div",{{opacity:0,y:40}},{{opacity:1,y:0,duration:0.35,stagger:0.15,ease:"back.out(1.8)"}},{lanjut+0.9:.2f});')
 J(f'tl.fromTo("#cta-btn",{{opacity:0,scale:0.6}},{{opacity:1,scale:1,duration:0.4,ease:"back.out(2)"}},{mana:.2f});')
 J(f'tl.to("#cta-btn",{{scale:1.06,duration:0.45,yoyo:true,repeat:5,ease:"sine.inOut"}},{mana+0.5:.2f});')
-J(f'tl.to("#sc-cta",{{opacity:0,duration:0.6}},{TOTAL-0.6:.2f});')
+J(f'tl.to("#sc-cta",{{opacity:0,duration:0.3}},{OUTRO_AT-0.3:.2f});')
+# ---- outro: user's brand clip, full 3s with its own sound (logo, website, phone)
+els.append(f'<video id="outro" class="fill" src="assets/footage/outro.mp4" playsinline data-has-audio="true" data-volume="0.85" data-start="{OUTRO_AT:.3f}" data-duration="{OUTRO_LEN:.3f}" data-media-start="0"></video>')
 sfx("whoosh", s - 0.3, 0.4)
 for i in range(3):
     sfx("pop", lanjut + 0.9 + i * 0.15, 0.4)
@@ -450,7 +454,8 @@ cap.append("</div>")
 for name, a, b in EDIT:
     sg = SEG[name]
     A("assets/audio/vo.mp3", sg["start"], sg["dur"], 1.0, a, fade_in=0.02, fade_out=0.04, idn=f"vo-{name}")
-A("assets/audio/music.wav", 0, TOTAL, 0.16, 0, fade_in=0.3, fade_out=1.5, idn="music")
+A("assets/audio/music.wav", 0, OUTRO_AT + 0.5, 0.16, 0, fade_in=0.3, fade_out=1.1, idn="music")
+# outro clip audio (on the <video>): source -20 LUFS vs VO -21.6 LUFS; rendered mix puts VO section at ~-17.6 LUFS; volume 0.85 puts the outro ~4 LU under it
 
 CSS = open(os.path.join(ROOT, "build/style.css")).read()
 

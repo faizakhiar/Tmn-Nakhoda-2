@@ -120,7 +120,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0f0c}
 </style>
 </head>
 <body>
-<div id="root" data-composition-id="main" data-start="0" data-duration="54.05" data-width="1080" data-height="1920">
+<div id="root" data-composition-id="main" data-start="0" data-duration="56.00" data-width="1080" data-height="1920">
 
 <section id="sc-hook" class="clip scene" data-start="0" data-duration="4.280">
   <img class="fill kb" id="hook-img" src="assets/img/render-front.png" alt="">
@@ -223,7 +223,8 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0f0c}
   <div class="cal" id="cal"><div class="cal-top">DIJANGKA SIAP</div><div class="cal-m" id="cal-m">DIS</div><div class="cal-y" id="cal-y">2027</div></div>
 </section>
 
-<section id="sc-cta" class="clip scene" data-start="46.130" data-duration="7.920">
+<video id="outro" class="clip fill" src="assets/footage/outro.mp4" playsinline data-has-audio="true" data-volume="0.85" data-start="53.000" data-duration="3.000" data-media-start="0"></video>
+<section id="sc-cta" class="clip scene" data-start="46.130" data-duration="6.910">
   <img class="fill" id="cta-img" src="assets/img/render-corner.png" alt="">
   <div class="shade-t"></div>
   <div class="cta-top" id="cta-top">NAK TAHU<br><em>LEBIH LANJUT?</em></div>
@@ -346,7 +347,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0f0c}
 <audio id="vo-pakej" src="assets/audio/vo.mp3" data-start="36.860" data-duration="6.330" data-media-start="37.720" data-volume="1.0" data-fade-in="0.02" data-fade-out="0.04"></audio>
 <audio id="vo-siap" src="assets/audio/vo.mp3" data-start="43.290" data-duration="2.800" data-media-start="44.280" data-volume="1.0" data-fade-in="0.02" data-fade-out="0.04"></audio>
 <audio id="vo-cta" src="assets/audio/vo.mp3" data-start="46.190" data-duration="6.260" data-media-start="47.400" data-volume="1.0" data-fade-in="0.02" data-fade-out="0.04"></audio>
-<audio id="music" src="assets/audio/music.wav" data-start="0.000" data-duration="54.050" data-media-start="0.000" data-volume="0.16" data-fade-in="0.3" data-fade-out="1.5"></audio>
+<audio id="music" src="assets/audio/music.wav" data-start="0.000" data-duration="53.500" data-media-start="0.000" data-volume="0.16" data-fade-in="0.3" data-fade-out="1.1"></audio>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
@@ -429,13 +430,13 @@ tl.fromTo("#pk-stamp",{opacity:0,scale:3,rotation:20},{opacity:1,scale:1,rotatio
 tl.fromTo(["#sc-siap","#v-sc-siap-0"],{clipPath:"inset(50% 0% 50% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.4,ease:"power3.inOut"},43.23);
 tl.fromTo("#cal",{opacity:0,rotationX:-90,y:60},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.6)"},44.14);
 tl.fromTo("#cal-y",{opacity:0,y:30},{opacity:1,y:0,duration:0.3},45.09);
-tl.fromTo("#sc-cta",{opacity:0},{opacity:1,duration:0.35},46.13);
-tl.fromTo("#cta-img",{scale:1.05},{scale:1.22,duration:7.86,ease:"none"},46.13);
+tl.fromTo(["#sc-cta","#outro"],{opacity:0},{opacity:1,duration:0.35},46.13);
+tl.fromTo("#cta-img",{scale:1.05},{scale:1.22,duration:6.81,ease:"none"},46.13);
 tl.fromTo("#cta-top",{opacity:0,y:-40},{opacity:1,y:0,duration:0.45,ease:"power3.out"},46.33);
 tl.fromTo("#cta-recap > div",{opacity:0,y:40},{opacity:1,y:0,duration:0.35,stagger:0.15,ease:"back.out(1.8)"},47.13);
 tl.fromTo("#cta-btn",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.4,ease:"back.out(2)"},49.69);
 tl.to("#cta-btn",{scale:1.06,duration:0.45,yoyo:true,repeat:5,ease:"sine.inOut"},50.19);
-tl.to("#sc-cta",{opacity:0,duration:0.6},53.45);
+tl.to("#sc-cta",{opacity:0,duration:0.3},52.70);
 tl.fromTo("#cap0",{scale:0.85,opacity:0},{scale:1,opacity:1,duration:0.12,ease:"back.out(2)"},4.32);
 tl.set("#cw0_0",{color:"#FFD23F"},4.32);
 tl.set("#cw0_1",{color:"#FFD23F"},4.46);
